@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="character_detail-container">
+    <div>
+        <img src="static/img/{{ equipement.id_equip }}.jpg" alt="{{ equipement.id_equip }}" width="200px" height="200px" style="border-radius: 75px;">
+    </div>
+    <div>
+        <h1>{{ equipement.id_equip }}</h1>
+        <p>{{ equipement.disponibilite }}</p>
+    </div>
+</div>
+{% endblock %}

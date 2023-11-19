@@ -1,0 +1,72 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-rounded">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <h1 class="occupated">ATTENTION</h1>
+                <p>Veuillez choisir un autre emplacement.</p>
+            {% endfor %}
+        </ul>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var messages = document.querySelector('.messages');
+                if (messages) {
+                    // Si des messages d'erreur existent, affiche une fenêtre pop-up
+                    alert("Merci de choisir un autre emplacement.");
+                }
+            });
+        </script>
+    {% endif %}
+
+    <div class="character-detail-wrapper">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+        <div class="character-detail-card">
+            <div class="character-info">
+                <h1>{{ character.id_character }}</h1>
+                <p>{{ character.etat }}</p>
+                <form method="POST" class="post-form">
+                    {% csrf_token %}
+                    <b> Déplacer : </b> 
+                    {{ form.as_p }}
+                    <button type="submit" class="btn validation-btn">Valider</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="character-detail-card">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+            <div class="character-info">
+                <h1>{{ character.lieu.id_equip }}</h1>
+                <p>Disponibilité : {{ character.lieu.disponibilite }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-rounded">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+<div class="equipment-details">
+    <h2>Tous les équipements</h2>
+    <div class="equipment-container">
+        {% for equipment in all_equipments %}
+            <div class="equipment-card">
+                <h2>{{ equipment.id_equip }}</h2>
+                <p>Disponibilité: {{ equipment.disponibilite }}</p>
+                {% for character in characters %}
+                    {% if character.lieu.id_equip == equipment.id_equip %}
+                        <p>Occupant: {{ character.id_character }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</link>
+</div>
+
+{% endblock %}

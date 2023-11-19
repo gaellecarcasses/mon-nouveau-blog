@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+    <h3>POISSONS</h3>
+    <div class="animals">
+        <div class="characters-wrapper">
+            {% for character in characters %}
+                <div class="character-container">
+                    <div class="image-container">
+                        <img src="static/img/{{ character.id_character }}.jpg" alt={{character.id_character}} width="200px" height="200px" style="border-radius: 75px;">
+                    </div>
+                    <div class="description">
+                        <h2><a href="{% url 'character_detail' id_character=character.id_character %}">{{ character.id_character }}</a></h2>
+                        <p>{{ character.etat }}</p>
+                        <p>{{ character.race }}</p>
+                        <p>{{ character.lieu }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <h3>EQUIPEMENTS</h3>
+    <div class="animals equipments">
+            {% for equipement in equipements %}
+                <div class="character-container">
+                    <div class="image-container">
+                        <img src="static/img/{{ equipement.id_equip }}.jpg" alt="Equipement" width="200px" height="200px" style="border-radius: 75px;">
+                    </div>
+                    <div class="description">
+                        <h2><a href="{% url 'equipement_detail' id_equip=equipement.id_equip %}">{{ equipement.id_equip }}</a></h2> 
+                        <p>{{ equipement.disponibilite }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}

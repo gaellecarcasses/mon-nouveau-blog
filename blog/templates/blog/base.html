@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>AQUARIUM - Sous l'Océan</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<div class="main-container">
+<body>
+    <header class="page-header">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="header-image">
+                    <img src="{% static 'img/bob.gif' %}" alt="Bob" style="width: 100px; height: auto;">
+                </div>
+                <div class="header-text">
+                    <h1><a href="/" style="color: inherit; text-decoration: none;">AQUARIUM - Sous l'Océan</a></h1>
+                </div>
+            </div>
+        </div>
+        <style>
+        .page-header {
+            position: relative;
+            text-align: center;
+            color: #ffffff;
+            background-image: url("{% static 'img/background.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0; /* Ajustez cet espace en fonction de vos besoins */
+        }
+        .header-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            }
+        
+        .header-content {
+                display: flex;
+                align-items: center;
+            }
+        .header-image {
+                margin-right: 10px; /* Espace entre l'image et le texte */
+            }
+        </style>
+    </header>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="..."></script>
+
+</body>
+</div>
+</html>
